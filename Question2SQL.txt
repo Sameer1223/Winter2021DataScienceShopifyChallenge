@@ -1,0 +1,33 @@
+Question 2
+===========================
+2.a)
+===========================
+SELECT COUNT(*)
+FROM Orders, Shippers
+WHERE Orders.ShipperID = Shippers.ShipperID and Shippers.ShipperName = "Speedy Express";
+
+ANSWER: 54
+
+===========================
+2.b)
+===========================
+SELECT Employees.LastName
+FROM Employees, Orders
+WHERE Employees.EmployeeID = Orders.EmployeeID
+GROUP BY Orders.EmployeeID
+ORDER BY COUNT(*) DESC
+LIMIT 1;
+
+ANSWER: Peacock
+
+===========================
+2.c)
+===========================
+SELECT Products.ProductName
+FROM Customers, Orders, Products, OrderDetails
+WHERE Customers.CustomerID = Orders.CustomerID and OrderDetails.OrderID = Orders.OrderID and Products.ProductID = OrderDetails.ProductID and Customers.Country = "Germany"
+GROUP BY Products.ProductID
+ORDER BY SUM(OrderDetails.Quantity) DESC
+LIMIT 1;
+
+Answer: Boston Crab Meat
